@@ -32,30 +32,31 @@
 		AA000256000000000000000A /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000156000000000000000A /* MockNetworkService.swift */; };
 		AA000257000000000000000A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000157000000000000000A /* NetworkError.swift */; };
 		AA000258000000000000000A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000158000000000000000A /* NetworkService.swift */; };
-		AA000259000000000000000A /* ConnectionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000159000000000000000A /* ConnectionDetailViewModel.swift */; };
-		AA00025A000000000000000A /* ConnectionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00015A000000000000000A /* ConnectionListViewModel.swift */; };
-		AA00025B000000000000000A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00015B000000000000000A /* SearchViewModel.swift */; };
-		AA00025C000000000000000A /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00015C000000000000000A /* TrackingViewModel.swift */; };
-		AA00025D000000000000000A /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00015D000000000000000A /* EmptyStateView.swift */; };
-		AA00025E000000000000000A /* ErrorBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00015E000000000000000A /* ErrorBannerView.swift */; };
-		AA00025F000000000000000A /* HeadphoneStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00015F000000000000000A /* HeadphoneStatusView.swift */; };
-		AA000260000000000000000A /* LineBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000160000000000000000A /* LineBadgeView.swift */; };
-		AA000261000000000000000A /* LoadingSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000161000000000000000A /* LoadingSkeletonView.swift */; };
-		AA000262000000000000000A /* ConnectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000162000000000000000A /* ConnectionListView.swift */; };
-		AA000263000000000000000A /* ConnectionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000163000000000000000A /* ConnectionRowView.swift */; };
-		AA000264000000000000000A /* AlertPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000164000000000000000A /* AlertPanel.swift */; };
-		AA000265000000000000000A /* ConnectionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000165000000000000000A /* ConnectionDetailView.swift */; };
-		AA000266000000000000000A /* StopRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000166000000000000000A /* StopRowView.swift */; };
-		AA000267000000000000000A /* LocationPermissionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000167000000000000000A /* LocationPermissionSheet.swift */; };
-		AA000268000000000000000A /* RecentSearchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000168000000000000000A /* RecentSearchRow.swift */; };
-		AA000269000000000000000A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000169000000000000000A /* SearchView.swift */; };
-		AA00026A000000000000000A /* StopSearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00016A000000000000000A /* StopSearchSheet.swift */; };
-		AA00026B000000000000000A /* ActiveTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00016B000000000000000A /* ActiveTrackingView.swift */; };
-		AA00026C000000000000000A /* TrackingMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00016C000000000000000A /* TrackingMapView.swift */; };
-		AA00026D000000000000000A /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00016D000000000000000A /* PreviewData.swift */; };
-		AA00036E000000000000000A /* AlertTimingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00016E000000000000000A /* AlertTimingTests.swift */; };
-		AA00036F000000000000000A /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00016F000000000000000A /* NetworkServiceTests.swift */; };
-		AA000370000000000000000A /* TrackingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000170000000000000000A /* TrackingManagerTests.swift */; };
+		AA000259000000000000000A /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000159000000000000000A /* PreviewData.swift */; };
+		AA00025A000000000000000A /* ConnectionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00015A000000000000000A /* ConnectionDetailViewModel.swift */; };
+		AA00025B000000000000000A /* ConnectionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00015B000000000000000A /* ConnectionListViewModel.swift */; };
+		AA00025C000000000000000A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00015C000000000000000A /* SearchViewModel.swift */; };
+		AA00025D000000000000000A /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00015D000000000000000A /* TrackingViewModel.swift */; };
+		AA00025E000000000000000A /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00015E000000000000000A /* EmptyStateView.swift */; };
+		AA00025F000000000000000A /* ErrorBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00015F000000000000000A /* ErrorBannerView.swift */; };
+		AA000260000000000000000A /* HeadphoneStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000160000000000000000A /* HeadphoneStatusView.swift */; };
+		AA000261000000000000000A /* LineBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000161000000000000000A /* LineBadgeView.swift */; };
+		AA000262000000000000000A /* LoadingSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000162000000000000000A /* LoadingSkeletonView.swift */; };
+		AA000263000000000000000A /* ConnectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000163000000000000000A /* ConnectionListView.swift */; };
+		AA000264000000000000000A /* ConnectionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000164000000000000000A /* ConnectionRowView.swift */; };
+		AA000265000000000000000A /* AlertPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000165000000000000000A /* AlertPanel.swift */; };
+		AA000266000000000000000A /* ConnectionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000166000000000000000A /* ConnectionDetailView.swift */; };
+		AA000267000000000000000A /* StopRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000167000000000000000A /* StopRowView.swift */; };
+		AA000268000000000000000A /* LocationPermissionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000168000000000000000A /* LocationPermissionSheet.swift */; };
+		AA000269000000000000000A /* RecentSearchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000169000000000000000A /* RecentSearchRow.swift */; };
+		AA00026A000000000000000A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00016A000000000000000A /* SearchView.swift */; };
+		AA00026B000000000000000A /* StopSearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00016B000000000000000A /* StopSearchSheet.swift */; };
+		AA00026C000000000000000A /* ActiveTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00016C000000000000000A /* ActiveTrackingView.swift */; };
+		AA00026D000000000000000A /* TrackingMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00016D000000000000000A /* TrackingMapView.swift */; };
+		AA00026E000000000000000A /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00016E000000000000000A /* PreviewData.swift */; };
+		AA00036F000000000000000A /* AlertTimingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00016F000000000000000A /* AlertTimingTests.swift */; };
+		AA000370000000000000000A /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000170000000000000000A /* NetworkServiceTests.swift */; };
+		AA000371000000000000000A /* TrackingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000171000000000000000A /* TrackingManagerTests.swift */; };
 		AA000019000000000000000A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA000017000000000000000A /* Assets.xcassets */; };
 		AA00001A000000000000000A /* cs in Resources */ = {isa = PBXBuildFile; fileRef = AA000018000000000000000A /* cs */; };
 /* End PBXBuildFile section */
@@ -92,30 +93,31 @@
 		AA000156000000000000000A /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockNetworkService.swift"; sourceTree = "<group>"; };
 		AA000157000000000000000A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkError.swift"; sourceTree = "<group>"; };
 		AA000158000000000000000A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService.swift"; sourceTree = "<group>"; };
-		AA000159000000000000000A /* ConnectionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConnectionDetailViewModel.swift"; sourceTree = "<group>"; };
-		AA00015A000000000000000A /* ConnectionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConnectionListViewModel.swift"; sourceTree = "<group>"; };
-		AA00015B000000000000000A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewModel.swift"; sourceTree = "<group>"; };
-		AA00015C000000000000000A /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackingViewModel.swift"; sourceTree = "<group>"; };
-		AA00015D000000000000000A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmptyStateView.swift"; sourceTree = "<group>"; };
-		AA00015E000000000000000A /* ErrorBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorBannerView.swift"; sourceTree = "<group>"; };
-		AA00015F000000000000000A /* HeadphoneStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeadphoneStatusView.swift"; sourceTree = "<group>"; };
-		AA000160000000000000000A /* LineBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineBadgeView.swift"; sourceTree = "<group>"; };
-		AA000161000000000000000A /* LoadingSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadingSkeletonView.swift"; sourceTree = "<group>"; };
-		AA000162000000000000000A /* ConnectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConnectionListView.swift"; sourceTree = "<group>"; };
-		AA000163000000000000000A /* ConnectionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConnectionRowView.swift"; sourceTree = "<group>"; };
-		AA000164000000000000000A /* AlertPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertPanel.swift"; sourceTree = "<group>"; };
-		AA000165000000000000000A /* ConnectionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConnectionDetailView.swift"; sourceTree = "<group>"; };
-		AA000166000000000000000A /* StopRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StopRowView.swift"; sourceTree = "<group>"; };
-		AA000167000000000000000A /* LocationPermissionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationPermissionSheet.swift"; sourceTree = "<group>"; };
-		AA000168000000000000000A /* RecentSearchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecentSearchRow.swift"; sourceTree = "<group>"; };
-		AA000169000000000000000A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchView.swift"; sourceTree = "<group>"; };
-		AA00016A000000000000000A /* StopSearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StopSearchSheet.swift"; sourceTree = "<group>"; };
-		AA00016B000000000000000A /* ActiveTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveTrackingView.swift"; sourceTree = "<group>"; };
-		AA00016C000000000000000A /* TrackingMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackingMapView.swift"; sourceTree = "<group>"; };
-		AA00016D000000000000000A /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewData.swift"; sourceTree = "<group>"; };
-		AA00016E000000000000000A /* AlertTimingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertTimingTests.swift"; sourceTree = "<group>"; };
-		AA00016F000000000000000A /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkServiceTests.swift"; sourceTree = "<group>"; };
-		AA000170000000000000000A /* TrackingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackingManagerTests.swift"; sourceTree = "<group>"; };
+		AA000159000000000000000A /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewData.swift"; sourceTree = "<group>"; };
+		AA00015A000000000000000A /* ConnectionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConnectionDetailViewModel.swift"; sourceTree = "<group>"; };
+		AA00015B000000000000000A /* ConnectionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConnectionListViewModel.swift"; sourceTree = "<group>"; };
+		AA00015C000000000000000A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewModel.swift"; sourceTree = "<group>"; };
+		AA00015D000000000000000A /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackingViewModel.swift"; sourceTree = "<group>"; };
+		AA00015E000000000000000A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmptyStateView.swift"; sourceTree = "<group>"; };
+		AA00015F000000000000000A /* ErrorBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorBannerView.swift"; sourceTree = "<group>"; };
+		AA000160000000000000000A /* HeadphoneStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeadphoneStatusView.swift"; sourceTree = "<group>"; };
+		AA000161000000000000000A /* LineBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineBadgeView.swift"; sourceTree = "<group>"; };
+		AA000162000000000000000A /* LoadingSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadingSkeletonView.swift"; sourceTree = "<group>"; };
+		AA000163000000000000000A /* ConnectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConnectionListView.swift"; sourceTree = "<group>"; };
+		AA000164000000000000000A /* ConnectionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConnectionRowView.swift"; sourceTree = "<group>"; };
+		AA000165000000000000000A /* AlertPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertPanel.swift"; sourceTree = "<group>"; };
+		AA000166000000000000000A /* ConnectionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConnectionDetailView.swift"; sourceTree = "<group>"; };
+		AA000167000000000000000A /* StopRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StopRowView.swift"; sourceTree = "<group>"; };
+		AA000168000000000000000A /* LocationPermissionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationPermissionSheet.swift"; sourceTree = "<group>"; };
+		AA000169000000000000000A /* RecentSearchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecentSearchRow.swift"; sourceTree = "<group>"; };
+		AA00016A000000000000000A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchView.swift"; sourceTree = "<group>"; };
+		AA00016B000000000000000A /* StopSearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StopSearchSheet.swift"; sourceTree = "<group>"; };
+		AA00016C000000000000000A /* ActiveTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveTrackingView.swift"; sourceTree = "<group>"; };
+		AA00016D000000000000000A /* TrackingMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackingMapView.swift"; sourceTree = "<group>"; };
+		AA00016E000000000000000A /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewData.swift"; sourceTree = "<group>"; };
+		AA00016F000000000000000A /* AlertTimingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertTimingTests.swift"; sourceTree = "<group>"; };
+		AA000170000000000000000A /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkServiceTests.swift"; sourceTree = "<group>"; };
+		AA000171000000000000000A /* TrackingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackingManagerTests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -166,6 +168,7 @@
 				AA000156000000000000000A /* MockNetworkService.swift */,
 				AA000157000000000000000A /* NetworkError.swift */,
 				AA000158000000000000000A /* NetworkService.swift */,
+				AA000159000000000000000A /* PreviewData.swift */,
 			);
 			path = "Networking";
 			sourceTree = "<group>";
@@ -185,10 +188,10 @@
 		AA000026000000000000000A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				AA000159000000000000000A /* ConnectionDetailViewModel.swift */,
-				AA00015A000000000000000A /* ConnectionListViewModel.swift */,
-				AA00015B000000000000000A /* SearchViewModel.swift */,
-				AA00015C000000000000000A /* TrackingViewModel.swift */,
+				AA00015A000000000000000A /* ConnectionDetailViewModel.swift */,
+				AA00015B000000000000000A /* ConnectionListViewModel.swift */,
+				AA00015C000000000000000A /* SearchViewModel.swift */,
+				AA00015D000000000000000A /* TrackingViewModel.swift */,
 			);
 			path = "ViewModels";
 			sourceTree = "<group>";
@@ -196,10 +199,10 @@
 		AA000028000000000000000A /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				AA000167000000000000000A /* LocationPermissionSheet.swift */,
-				AA000168000000000000000A /* RecentSearchRow.swift */,
-				AA000169000000000000000A /* SearchView.swift */,
-				AA00016A000000000000000A /* StopSearchSheet.swift */,
+				AA000168000000000000000A /* LocationPermissionSheet.swift */,
+				AA000169000000000000000A /* RecentSearchRow.swift */,
+				AA00016A000000000000000A /* SearchView.swift */,
+				AA00016B000000000000000A /* StopSearchSheet.swift */,
 			);
 			path = "Search";
 			sourceTree = "<group>";
@@ -207,8 +210,8 @@
 		AA000029000000000000000A /* Connections */ = {
 			isa = PBXGroup;
 			children = (
-				AA000162000000000000000A /* ConnectionListView.swift */,
-				AA000163000000000000000A /* ConnectionRowView.swift */,
+				AA000163000000000000000A /* ConnectionListView.swift */,
+				AA000164000000000000000A /* ConnectionRowView.swift */,
 			);
 			path = "Connections";
 			sourceTree = "<group>";
@@ -216,9 +219,9 @@
 		AA00002A000000000000000A /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				AA000164000000000000000A /* AlertPanel.swift */,
-				AA000165000000000000000A /* ConnectionDetailView.swift */,
-				AA000166000000000000000A /* StopRowView.swift */,
+				AA000165000000000000000A /* AlertPanel.swift */,
+				AA000166000000000000000A /* ConnectionDetailView.swift */,
+				AA000167000000000000000A /* StopRowView.swift */,
 			);
 			path = "Detail";
 			sourceTree = "<group>";
@@ -226,8 +229,8 @@
 		AA00002B000000000000000A /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
-				AA00016B000000000000000A /* ActiveTrackingView.swift */,
-				AA00016C000000000000000A /* TrackingMapView.swift */,
+				AA00016C000000000000000A /* ActiveTrackingView.swift */,
+				AA00016D000000000000000A /* TrackingMapView.swift */,
 			);
 			path = "Tracking";
 			sourceTree = "<group>";
@@ -235,11 +238,11 @@
 		AA00002C000000000000000A /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				AA00015D000000000000000A /* EmptyStateView.swift */,
-				AA00015E000000000000000A /* ErrorBannerView.swift */,
-				AA00015F000000000000000A /* HeadphoneStatusView.swift */,
-				AA000160000000000000000A /* LineBadgeView.swift */,
-				AA000161000000000000000A /* LoadingSkeletonView.swift */,
+				AA00015E000000000000000A /* EmptyStateView.swift */,
+				AA00015F000000000000000A /* ErrorBannerView.swift */,
+				AA000160000000000000000A /* HeadphoneStatusView.swift */,
+				AA000161000000000000000A /* LineBadgeView.swift */,
+				AA000162000000000000000A /* LoadingSkeletonView.swift */,
 			);
 			path = "Components";
 			sourceTree = "<group>";
@@ -267,7 +270,7 @@
 		AA000030000000000000000A /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				AA00016D000000000000000A /* PreviewData.swift */,
+				AA00016E000000000000000A /* PreviewData.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -296,9 +299,9 @@
 		AA000031000000000000000A /* MHDPruvodceTests */ = {
 			isa = PBXGroup;
 			children = (
-				AA00016E000000000000000A /* AlertTimingTests.swift */,
-				AA00016F000000000000000A /* NetworkServiceTests.swift */,
-				AA000170000000000000000A /* TrackingManagerTests.swift */,
+				AA00016F000000000000000A /* AlertTimingTests.swift */,
+				AA000170000000000000000A /* NetworkServiceTests.swift */,
+				AA000171000000000000000A /* TrackingManagerTests.swift */,
 			);
 			path = MHDPruvodceTests;
 			sourceTree = "<group>";
@@ -443,27 +446,28 @@
 				AA000256000000000000000A /* MockNetworkService.swift in Sources */,
 				AA000257000000000000000A /* NetworkError.swift in Sources */,
 				AA000258000000000000000A /* NetworkService.swift in Sources */,
-				AA000259000000000000000A /* ConnectionDetailViewModel.swift in Sources */,
-				AA00025A000000000000000A /* ConnectionListViewModel.swift in Sources */,
-				AA00025B000000000000000A /* SearchViewModel.swift in Sources */,
-				AA00025C000000000000000A /* TrackingViewModel.swift in Sources */,
-				AA00025D000000000000000A /* EmptyStateView.swift in Sources */,
-				AA00025E000000000000000A /* ErrorBannerView.swift in Sources */,
-				AA00025F000000000000000A /* HeadphoneStatusView.swift in Sources */,
-				AA000260000000000000000A /* LineBadgeView.swift in Sources */,
-				AA000261000000000000000A /* LoadingSkeletonView.swift in Sources */,
-				AA000262000000000000000A /* ConnectionListView.swift in Sources */,
-				AA000263000000000000000A /* ConnectionRowView.swift in Sources */,
-				AA000264000000000000000A /* AlertPanel.swift in Sources */,
-				AA000265000000000000000A /* ConnectionDetailView.swift in Sources */,
-				AA000266000000000000000A /* StopRowView.swift in Sources */,
-				AA000267000000000000000A /* LocationPermissionSheet.swift in Sources */,
-				AA000268000000000000000A /* RecentSearchRow.swift in Sources */,
-				AA000269000000000000000A /* SearchView.swift in Sources */,
-				AA00026A000000000000000A /* StopSearchSheet.swift in Sources */,
-				AA00026B000000000000000A /* ActiveTrackingView.swift in Sources */,
-				AA00026C000000000000000A /* TrackingMapView.swift in Sources */,
-				AA00026D000000000000000A /* PreviewData.swift in Sources */,
+				AA000259000000000000000A /* PreviewData.swift in Sources */,
+				AA00025A000000000000000A /* ConnectionDetailViewModel.swift in Sources */,
+				AA00025B000000000000000A /* ConnectionListViewModel.swift in Sources */,
+				AA00025C000000000000000A /* SearchViewModel.swift in Sources */,
+				AA00025D000000000000000A /* TrackingViewModel.swift in Sources */,
+				AA00025E000000000000000A /* EmptyStateView.swift in Sources */,
+				AA00025F000000000000000A /* ErrorBannerView.swift in Sources */,
+				AA000260000000000000000A /* HeadphoneStatusView.swift in Sources */,
+				AA000261000000000000000A /* LineBadgeView.swift in Sources */,
+				AA000262000000000000000A /* LoadingSkeletonView.swift in Sources */,
+				AA000263000000000000000A /* ConnectionListView.swift in Sources */,
+				AA000264000000000000000A /* ConnectionRowView.swift in Sources */,
+				AA000265000000000000000A /* AlertPanel.swift in Sources */,
+				AA000266000000000000000A /* ConnectionDetailView.swift in Sources */,
+				AA000267000000000000000A /* StopRowView.swift in Sources */,
+				AA000268000000000000000A /* LocationPermissionSheet.swift in Sources */,
+				AA000269000000000000000A /* RecentSearchRow.swift in Sources */,
+				AA00026A000000000000000A /* SearchView.swift in Sources */,
+				AA00026B000000000000000A /* StopSearchSheet.swift in Sources */,
+				AA00026C000000000000000A /* ActiveTrackingView.swift in Sources */,
+				AA00026D000000000000000A /* TrackingMapView.swift in Sources */,
+				AA00026E000000000000000A /* PreviewData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,9 +475,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA00036E000000000000000A /* AlertTimingTests.swift in Sources */,
-				AA00036F000000000000000A /* NetworkServiceTests.swift in Sources */,
-				AA000370000000000000000A /* TrackingManagerTests.swift in Sources */,
+				AA00036F000000000000000A /* AlertTimingTests.swift in Sources */,
+				AA000370000000000000000A /* NetworkServiceTests.swift in Sources */,
+				AA000371000000000000000A /* TrackingManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
