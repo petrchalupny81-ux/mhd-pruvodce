@@ -1,0 +1,9 @@
+# Force LF line endings for all text files (macOS/Linux compatibility)
+* text=auto eol=lf
+
+# Binary files — no conversion
+*.png binary
+*.jpg binary
+*.caf binary
+*.zip binary
+*.ipa binary
