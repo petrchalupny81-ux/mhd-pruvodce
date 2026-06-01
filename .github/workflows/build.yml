@@ -32,8 +32,25 @@ jobs:
             echo "Using mock Config.plist (no API key)"
           fi
 
-      - name: List project structure
-        run: xcodebuild -list -project MHDPruvodce.xcodeproj
+      - name: List project structure and available simulators
+        run: |
+          xcodebuild -list -project MHDPruvodce.xcodeproj
+          xcrun simctl list devicetypes | grep -i "iphone" | tail -10
+
+      - name: Pick available simulator
+        id: sim
+        run: |
+          # Find any available iPhone simulator on this runner
+          DEST=$(xcrun simctl list devices available | grep -i "iPhone" | grep -v "unavailable" | head -1)
+          echo "Available: $DEST"
+          # Extract UDID
+          UDID=$(echo "$DEST" | grep -oE '[0-9A-F-]{36}')
+          if [ -z "$UDID" ]; then
+            # Fallback: use generic platform destination
+            echo "dest=platform=iOS Simulator,name=iPhone 16" >> "$GITHUB_OUTPUT"
+          else
+            echo "dest=platform=iOS Simulator,id=$UDID" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Build for simulator
         run: |
@@ -41,7 +58,7 @@ jobs:
             -project MHDPruvodce.xcodeproj \
             -scheme MHDPruvodce \
             -configuration Debug \
-            -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=latest' \
+            -destination '${{ steps.sim.outputs.dest }}' \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
@@ -51,7 +68,7 @@ jobs:
             echo "✅ BUILD SUCCEEDED"
           else
             echo "❌ BUILD FAILED"
-            grep "error:" build.log | head -30
+            grep "error:" build.log | head -40
             exit 1
           fi
 
@@ -60,12 +77,12 @@ jobs:
           xcodebuild test \
             -project MHDPruvodce.xcodeproj \
             -scheme MHDPruvodce \
-            -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=latest' \
+            -destination '${{ steps.sim.outputs.dest }}' \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
             SWIFT_TREAT_WARNINGS_AS_ERRORS=NO \
-            2>&1 | tail -20 || true
+            2>&1 | tail -30 || true
 
       - name: Package .app bundle
         run: |
