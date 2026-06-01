@@ -42,13 +42,22 @@ jobs:
           xcodebuild -showdestinations -project MHDPruvodce.xcodeproj -scheme MHDPruvodce 2>&1 || true
           xcrun simctl list devices available 2>&1 | grep -i "iphone" | head -10
 
-      - name: Build for simulator (SDK-based, no destination needed)
+      - name: Boot simulator
+        run: |
+          # Boot the first available iPhone simulator
+          UDID=$(xcrun simctl list devices available | grep -i "iPhone" | grep -oE '[0-9A-F-]{36}' | head -1)
+          echo "Booting simulator UDID: $UDID"
+          xcrun simctl boot "$UDID" 2>/dev/null || true
+          echo "SIM_UDID=$UDID" >> "$GITHUB_ENV"
+
+      - name: Build for simulator
         run: |
           xcodebuild build \
             -project MHDPruvodce.xcodeproj \
             -scheme MHDPruvodce \
             -configuration Debug \
             -sdk iphonesimulator \
+            -destination "platform=iOS Simulator,id=${SIM_UDID}" \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
@@ -60,7 +69,7 @@ jobs:
             echo "✅ BUILD SUCCEEDED"
           else
             echo "❌ BUILD FAILED"
-            grep "error:" build.log | grep -v "^note:" | head -50
+            grep " error:" build.log | head -50
             exit 1
           fi
 
@@ -70,7 +79,7 @@ jobs:
             -project MHDPruvodce.xcodeproj \
             -scheme MHDPruvodce \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -destination "platform=iOS Simulator,id=${SIM_UDID}" \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
