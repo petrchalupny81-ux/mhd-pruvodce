@@ -10,12 +10,12 @@ enum LineType: String, Codable, CaseIterable {
 
     var color: Color {
         switch self {
-        case .bus:        return Color(.busBadge)
-        case .tram:       return Color(.tramBadge)
-        case .metro:      return Color(.metroBadge)
-        case .train:      return Color(.trainBadge)
-        case .trolleybus: return Color(.trolleybusBadge)
-        case .ferry:      return Color(.primary)
+        case .bus:        return Color("BusBadge")
+        case .tram:       return Color("TramBadge")
+        case .metro:      return Color("MetroBadge")
+        case .train:      return Color("TrainBadge")
+        case .trolleybus: return Color("TrolleybusBadge")
+        case .ferry:      return .primary
         }
     }
 
