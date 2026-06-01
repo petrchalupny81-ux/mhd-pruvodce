@@ -1,0 +1,29 @@
+{
+  "name": "MHD Průvodce Source",
+  "identifier": "cz.mhd.pruvodce.altstore",
+  "sourceURL": "https://petrchalupny81-ux.github.io/mhd-pruvodce/apps.json",
+  "apps": [
+    {
+      "name": "MHD Průvodce",
+      "bundleIdentifier": "cz.mhd.pruvodce",
+      "developerName": "MHD Průvodce",
+      "subtitle": "Nikdy nezmeškej svoji zastávku",
+      "localizedDescription": "Sleduj spoje MHD v reálném čase po celé České republice. GPS upozornění tě varuje před příjezdem na zastávku — funguje i se zavřenou aplikací.\n\nFunkce:\n• Upozornění 10, 5, 3 nebo 2 min před zastávkou\n• Zvuk pouze při připojených sluchátkách\n• Real-time data z IDOS\n• Dynamic Island countdown\n• Podpora bus, tram, metro, vlak, trolejbus",
+      "iconURL": "https://raw.githubusercontent.com/petrchalupny81-ux/mhd-pruvodce/main/docs/icon.png",
+      "tintColor": "0A84FF",
+      "category": "utilities",
+      "versions": [
+        {
+          "version": "1.0.1",
+          "date": "2026-06-01",
+          "localizedDescription": "První verze MHD Průvodce.",
+          "downloadURL": "https://github.com/petrchalupny81-ux/mhd-pruvodce/releases/download/v1.0.1/MHDPruvodce.ipa",
+          "size": 281600,
+          "minOSVersion": "17.0"
+        }
+      ],
+      "screenshotURLs": []
+    }
+  ],
+  "news": []
+}

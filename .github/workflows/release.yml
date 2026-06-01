@@ -6,6 +6,9 @@ on:
       - 'v*'          # spustí se při tagu v1.0.0, v1.0.1 atd.
   workflow_dispatch:  # nebo ručně jedním kliknutím
 
+permissions:
+  contents: write
+
 jobs:
   build-ipa:
     name: Build unsigned IPA for AltStore
