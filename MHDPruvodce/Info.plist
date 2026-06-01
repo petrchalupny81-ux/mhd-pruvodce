@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>cz.mhd.pruvodce</string>
+
+    <!-- Location permissions -->
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>MHD Průvodce potřebuje vaši polohu na pozadí, aby vás upozornil před příjezdem na zastávku.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>MHD Průvodce potřebuje vaši polohu pro sledování trasy.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Povolte polohu vždy, aby upozornění fungovala i se zavřenou aplikací.</string>
+
+    <!-- Background modes -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>location</string>
+        <string>fetch</string>
+        <string>processing</string>
+        <string>audio</string>
+    </array>
+
+    <!-- Background task identifiers -->
+    <key>BGTaskSchedulerPermittedIdentifiers</key>
+    <array>
+        <string>cz.mhd.refresh</string>
+        <string>cz.mhd.locationcheck</string>
+    </array>
+
+    <!-- Localization -->
+    <key>CFBundleDevelopmentRegion</key>
+    <string>cs</string>
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>cs</string>
+    </array>
+</dict>
+</plist>

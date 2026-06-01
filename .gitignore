@@ -1,0 +1,19 @@
+# API klíče — NIKDY necommitovat
+MHDPruvodce/Config/Config.plist
+
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcworkspace/xcshareddata/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+build/
+
+# SPM
+.build/
+*.resolved
+
+# macOS
+.DS_Store

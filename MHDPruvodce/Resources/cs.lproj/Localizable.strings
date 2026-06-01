@@ -1,0 +1,68 @@
+/* App-wide */
+"Kde jedete?" = "Kde jedete?";
+"Odkud" = "Odkud";
+"Kam" = "Kam";
+"Hledat spoj" = "Hledat spoj";
+"Zrušit" = "Zrušit";
+"Zkusit znovu" = "Zkusit znovu";
+"Nyní ne" = "Nyní ne";
+
+/* Search */
+"Název zastávky…" = "Název zastávky…";
+"Hledejte zastávku" = "Hledejte zastávku";
+"Začněte psát název zastávky nebo města." = "Začněte psát název zastávky nebo města.";
+"Zastávka nenalezena" = "Zastávka nenalezena";
+"Zkuste jiný název nebo město." = "Zkuste jiný název nebo město.";
+"Chyba připojení" = "Chyba připojení";
+"Oblíbené trasy" = "Oblíbené trasy";
+"Poslední hledání" = "Poslední hledání";
+
+/* Connections */
+"Žádné spoje nenalezeny" = "Žádné spoje nenalezeny";
+"Žádné přímé spoje. Zkuste jiný čas." = "Žádné přímé spoje. Zkuste jiný čas.";
+"Včas" = "Včas";
+"Přímý" = "Přímý";
+"1 přestup" = "1 přestup";
+
+/* Detail */
+"Itinerář" = "Itinerář";
+"Připomenutí pro: %@" = "Připomenutí pro: %@";
+"Aktivovat sledování" = "Aktivovat sledování";
+"🎧 Zvuk zazní pouze při připojených sluchátkách" = "🎧 Zvuk zazní pouze při připojených sluchátkách";
+"Nástupiště %@" = "Nástupiště %@";
+"⚠️ Bez real-time dat — zobrazeny plánované časy" = "⚠️ Bez real-time dat — zobrazeny plánované časy";
+
+/* Tracking */
+"Sledování trasy" = "Sledování trasy";
+"Jedete na:" = "Jedete na:";
+"Příjezd za ~%lld min" = "Příjezd za ~%lld min";
+"Nastupujte!" = "Nastupujte!";
+"Nadcházející zastávky" = "Nadcházející zastávky";
+"Žádné další zastávky" = "Žádné další zastávky";
+"Zastavit sledování" = "Zastavit sledování";
+"Zastavit sledování?" = "Zastavit sledování?";
+"Pokračovat" = "Pokračovat";
+"Zpět" = "Zpět";
+"Sluchátka připojena" = "Sluchátka připojena";
+"Sluchátka odpojena – bez zvuku" = "Sluchátka odpojena – bez zvuku";
+"Sluchátka odpojena – zvukové upozornění bude při připojení" = "Sluchátka odpojena – zvukové upozornění bude při připojení";
+"Režim úspory energie – aktualizace polohy omezeny" = "Režim úspory energie – aktualizace polohy omezeny";
+
+/* Location permission */
+"Povolte přístup k poloze" = "Povolte přístup k poloze";
+"MHD Průvodce potřebuje vaši polohu, aby vás mohl upozornit před příjezdem na zastávku — i když je aplikace na pozadí." = "MHD Průvodce potřebuje vaši polohu, aby vás mohl upozornit před příjezdem na zastávku — i když je aplikace na pozadí.";
+"Upozornění před zastávkou" = "Upozornění před zastávkou";
+"Dostanete vibrace a zvuk (se sluchátky) v pravý čas" = "Dostanete vibrace a zvuk (se sluchátky) v pravý čas";
+"Šetří baterii" = "Šetří baterii";
+"Poloha se sleduje jen během aktivní jízdy" = "Poloha se sleduje jen během aktivní jízdy";
+"Vaše data jsou soukromá" = "Vaše data jsou soukromá";
+"Poloha se nikam neodesílá" = "Poloha se nikam neodesílá";
+"Povolit polohu vždy" = "Povolit polohu vždy";
+"Jen při používání" = "Jen při používání";
+"Otevřít Nastavení" = "Otevřít Nastavení";
+"Poloha povolena" = "Poloha povolena";
+"Máte povolenou polohu jen při použití." = "Máte povolenou polohu jen při použití.";
+"Povolit vždy v Nastavení" = "Povolit vždy v Nastavení";
+
+/* Errors */
+"Nastala chyba." = "Nastala chyba.";
