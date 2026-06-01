@@ -1,0 +1,25 @@
+Command line invocation:
+    /Applications/Xcode_16.2.app/Contents/Developer/usr/bin/xcodebuild build -project MHDPruvodce.xcodeproj -scheme MHDPruvodce -configuration Debug -sdk iphonesimulator18.2 -destination "platform=iOS Simulator,id=57DAC7D7-5067-4346-9860-CEEBA84AE630" CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO CODE_SIGNING_ENTITLEMENTS= SWIFT_TREAT_WARNINGS_AS_ERRORS=NO ONLY_ACTIVE_ARCH=NO IPHONEOS_DEPLOYMENT_TARGET=17.0 ASSETCATALOG_COMPILER_SKIP_APP_STORE_DEPLOYMENT=YES ASSETCATALOG_NOTICE=NO ASSETCATALOG_WARNINGS=NO
+
+User defaults from command line:
+    IDEPackageSupportUseBuiltinSCM = YES
+
+Build settings from command line:
+    ASSETCATALOG_COMPILER_SKIP_APP_STORE_DEPLOYMENT = YES
+    ASSETCATALOG_NOTICE = NO
+    ASSETCATALOG_WARNINGS = NO
+    CODE_SIGN_IDENTITY = 
+    CODE_SIGNING_ALLOWED = NO
+    CODE_SIGNING_ENTITLEMENTS = 
+    CODE_SIGNING_REQUIRED = NO
+    IPHONEOS_DEPLOYMENT_TARGET = 17.0
+    ONLY_ACTIVE_ARCH = NO
+    SDKROOT = iphonesimulator18.2
+    SWIFT_TREAT_WARNINGS_AS_ERRORS = NO
+
+2026-06-01 14:22:35.085 xcodebuild[3778:16128] Writing error result bundle to /var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/ResultBundle_2026-01-06_14-22-0035.xcresult
+xcodebuild: error: Unable to find a destination matching the provided destination specifier:
+		{ platform:iOS Simulator, id:57DAC7D7-5067-4346-9860-CEEBA84AE630 }
+
+	Ineligible destinations for the "MHDPruvodce" scheme:
+		{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Any iOS Device, error:iOS 18.2 is not installed. To use with Xcode, first download and install the platform }

@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct LocationPermissionSheet: View {
     @ObservedObject var locationManager: LocationManager

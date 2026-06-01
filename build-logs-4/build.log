@@ -1,0 +1,18 @@
+Command line invocation:
+    /Applications/Xcode_16.2.app/Contents/Developer/usr/bin/xcodebuild build -project MHDPruvodce.xcodeproj -scheme MHDPruvodce -configuration Debug -destination "platform=iOS Simulator,id=57DAC7D7-5067-4346-9860-CEEBA84AE630" CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO SWIFT_TREAT_WARNINGS_AS_ERRORS=NO
+
+User defaults from command line:
+    IDEPackageSupportUseBuiltinSCM = YES
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = 
+    CODE_SIGNING_ALLOWED = NO
+    CODE_SIGNING_REQUIRED = NO
+    SWIFT_TREAT_WARNINGS_AS_ERRORS = NO
+
+2026-06-01 14:04:03.801 xcodebuild[3212:12816] Writing error result bundle to /var/folders/8d/778wjbv96mq1760tv6gk374m0000gn/T/ResultBundle_2026-01-06_14-04-0003.xcresult
+xcodebuild: error: Unable to find a destination matching the provided destination specifier:
+		{ platform:iOS Simulator, id:57DAC7D7-5067-4346-9860-CEEBA84AE630 }
+
+	Ineligible destinations for the "MHDPruvodce" scheme:
+		{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Any iOS Device, error:iOS 18.2 is not installed. To use with Xcode, first download and install the platform }
