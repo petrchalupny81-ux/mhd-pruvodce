@@ -3,241 +3,236 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MHD Průvodce – Český průvodce MHD</title>
-  <meta name="description" content="Sleduj spoje MHD v reálném čase a nechej se upozornit před zastávkou. Vibrace a zvuk (se sluchátky) vždy ve správný čas.">
+  <title>MHD Průvodce – Stáhni zdarma</title>
+  <meta name="description" content="Sleduj spoje MHD v reálném čase. Stáhni zdarma přes AltStore.">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --blue:   #0A84FF;
       --green:  #30D158;
       --orange: #FF9F0A;
       --red:    #FF453A;
+      --purple: #BF5AF2;
       --bg:     #0a0a0f;
       --card:   #141420;
       --border: rgba(255,255,255,0.08);
       --text:   #f0f0f5;
       --muted:  rgba(240,240,245,0.55);
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
+      background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 16px 32px;
-      background: rgba(10,10,15,0.75);
-      backdrop-filter: blur(20px);
+      background: rgba(10,10,15,0.8); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.1rem; }
-    .nav-logo .icon {
-      width: 36px; height: 36px; border-radius: 10px;
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; }
+    .nav-icon {
+      width: 34px; height: 34px; border-radius: 9px;
       background: linear-gradient(135deg, var(--blue), #5e5ce6);
-      display: grid; place-items: center; font-size: 1.2rem;
+      display: grid; place-items: center; font-size: 1.1rem;
     }
-    .nav-badge {
-      font-size: 0.7rem; font-weight: 600; padding: 3px 10px;
-      background: rgba(10,132,255,0.15); color: var(--blue);
-      border: 1px solid rgba(10,132,255,0.3); border-radius: 20px;
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-dl {
+      padding: 8px 18px; border-radius: 20px;
+      background: var(--blue); color: #fff !important;
+      font-weight: 600; font-size: 0.85rem;
     }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 120px 24px 80px;
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 60px;
       position: relative; overflow: hidden;
     }
     .hero::before {
-      content: "";
-      position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
-      width: 800px; height: 800px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(10,132,255,0.12) 0%, transparent 70%);
+      content: ""; position: absolute; top: -150px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(10,132,255,0.1) 0%, transparent 65%);
       pointer-events: none;
     }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.8rem; font-weight: 600; padding: 6px 16px;
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.78rem; font-weight: 600; padding: 5px 14px;
       background: rgba(48,209,88,0.1); color: var(--green);
-      border: 1px solid rgba(48,209,88,0.25); border-radius: 20px;
-      margin-bottom: 28px;
+      border: 1px solid rgba(48,209,88,0.25); border-radius: 20px; margin-bottom: 28px;
     }
-    .hero-badge::before { content: "●"; font-size: 0.5rem; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 1.8s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
 
     h1 {
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;
-      margin-bottom: 24px;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 22px;
     }
-    h1 span { color: var(--blue); }
+    h1 em { font-style: normal; color: var(--blue); }
 
-    .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--muted); max-width: 560px; margin: 0 auto 48px;
+    .hero-desc {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--muted); max-width: 520px; margin: 0 auto 44px;
     }
 
-    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    /* DOWNLOAD BUTTONS */
+    .dl-buttons { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 14px; }
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 28px; border-radius: 50px;
-      font-size: 1rem; font-weight: 600; text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.15s;
+      padding: 14px 26px; border-radius: 50px;
+      font-size: 0.95rem; font-weight: 600; text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s; cursor: pointer; border: none;
     }
     .btn:hover { transform: translateY(-2px); }
-    .btn-primary {
+    .btn-altstore {
       background: var(--blue); color: #fff;
-      box-shadow: 0 8px 32px rgba(10,132,255,0.35);
+      box-shadow: 0 8px 30px rgba(10,132,255,0.35);
     }
-    .btn-primary:hover { box-shadow: 0 12px 40px rgba(10,132,255,0.5); }
-    .btn-secondary {
-      background: var(--card); color: var(--text);
-      border: 1px solid var(--border);
+    .btn-altstore:hover { box-shadow: 0 12px 40px rgba(10,132,255,0.5); }
+    .btn-ipa {
+      background: var(--card); color: var(--text); border: 1px solid var(--border);
+    }
+    .btn-github {
+      background: transparent; color: var(--muted); border: 1px solid var(--border);
+      font-size: 0.85rem; padding: 10px 20px;
+    }
+    .btn-github:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .free-badge {
+      font-size: 0.75rem; color: var(--green);
+      background: rgba(48,209,88,0.1); border: 1px solid rgba(48,209,88,0.2);
+      padding: 4px 12px; border-radius: 20px; margin-top: 4px;
+      display: inline-block;
     }
 
-    /* ── PHONE MOCKUP ── */
-    .phone-wrap {
-      margin: 72px auto 0; position: relative;
-      width: min(320px, 85vw);
-    }
+    /* PHONE */
+    .phone-wrap { margin: 56px auto 0; width: min(290px, 82vw); }
     .phone {
       width: 100%; aspect-ratio: 9/19.5;
-      background: #1c1c2e;
-      border-radius: 44px;
-      border: 2px solid rgba(255,255,255,0.12);
-      box-shadow: 0 40px 120px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.05) inset;
-      overflow: hidden; position: relative;
-      display: flex; flex-direction: column;
+      background: #1c1c2e; border-radius: 42px;
+      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+      overflow: hidden; display: flex; flex-direction: column;
     }
-    .phone-notch {
-      width: 120px; height: 30px; background: #0a0a0f;
-      border-radius: 0 0 20px 20px; margin: 0 auto;
-      position: relative; z-index: 2;
+    .notch { width: 110px; height: 28px; background: #0a0a0f; border-radius: 0 0 18px 18px; margin: 0 auto; }
+    .screen {
+      flex: 1; padding: 10px 14px 16px;
+      background: linear-gradient(180deg, #0f0f1a, #111128);
+      display: flex; flex-direction: column; gap: 8px;
     }
-    .phone-screen {
-      flex: 1; padding: 12px 16px 20px;
-      background: linear-gradient(180deg, #0f0f1a 0%, #111128 100%);
-      display: flex; flex-direction: column; gap: 10px; overflow: hidden;
+    .s-title { font-size: 1.1rem; font-weight: 700; margin-top: 2px; }
+    .s-sub { font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-top: -4px; }
+    .s-input {
+      background: rgba(255,255,255,0.07); border-radius: 10px;
+      padding: 8px 10px; display: flex; align-items: center; gap: 7px;
+      font-size: 0.7rem; color: rgba(255,255,255,0.7);
     }
-    .phone-title { font-size: 1.2rem; font-weight: 700; color: #fff; margin-top: 4px; }
-    .phone-sub { font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-top: -6px; }
+    .s-card { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 9px 10px; }
+    .s-row { display: flex; justify-content: space-between; align-items: baseline; }
+    .s-time { font-size: 1rem; font-weight: 700; }
+    .s-dur { font-size: 0.6rem; color: rgba(255,255,255,0.4); }
+    .s-badges { display: flex; gap: 4px; margin-top: 5px; }
+    .sb { font-size: 0.55rem; font-weight: 700; padding: 2px 6px; border-radius: 20px; color: #fff; }
+    .sb-m { background: #30D158; } .sb-b { background: #0A84FF; }
+    .sb-t { background: #FF9F0A; } .sb-r { background: #FF453A; }
+    .s-alert {
+      background: rgba(10,132,255,0.15); border: 1px solid rgba(10,132,255,0.25);
+      border-radius: 10px; padding: 8px 10px;
+      display: flex; align-items: center; gap: 7px; font-size: 0.65rem;
+      color: rgba(255,255,255,0.8); line-height: 1.4;
+    }
+    .s-track {
+      background: rgba(48,209,88,0.1); border: 1px solid rgba(48,209,88,0.2);
+      border-radius: 10px; padding: 8px; text-align: center;
+    }
+    .s-track-n { font-size: 1.8rem; font-weight: 800; color: var(--green); line-height: 1; }
+    .s-track-l { font-size: 0.6rem; color: rgba(255,255,255,0.4); }
 
-    .mock-input {
-      background: rgba(255,255,255,0.07); border-radius: 12px;
-      padding: 10px 12px; display: flex; align-items: center; gap: 8px;
-    }
-    .mock-input-icon { font-size: 0.85rem; opacity: 0.6; }
-    .mock-input-text { font-size: 0.75rem; color: rgba(255,255,255,0.7); }
-
-    .mock-result {
-      background: rgba(255,255,255,0.05); border-radius: 12px;
-      padding: 10px 12px;
-    }
-    .mock-result-row { display: flex; align-items: center; justify-content: space-between; }
-    .mock-time { font-size: 1.1rem; font-weight: 700; color: #fff; }
-    .mock-duration { font-size: 0.65rem; color: rgba(255,255,255,0.5); }
-    .mock-badges { display: flex; gap: 4px; margin-top: 6px; }
-    .mock-badge {
-      font-size: 0.6rem; font-weight: 700; padding: 2px 7px;
-      border-radius: 20px; color: #fff;
-    }
-    .badge-metro  { background: #30D158; }
-    .badge-bus    { background: #0A84FF; }
-    .badge-tram   { background: #FF9F0A; }
-    .badge-train  { background: #FF453A; }
-
-    .mock-alert {
-      background: linear-gradient(135deg, rgba(10,132,255,0.2), rgba(10,132,255,0.08));
-      border: 1px solid rgba(10,132,255,0.3);
-      border-radius: 12px; padding: 10px 12px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .mock-alert-icon { font-size: 1.1rem; }
-    .mock-alert-text { font-size: 0.7rem; color: rgba(255,255,255,0.85); line-height: 1.4; }
-    .mock-alert-text strong { color: #fff; display: block; font-size: 0.75rem; }
-
-    .mock-tracking {
-      background: rgba(48,209,88,0.1); border: 1px solid rgba(48,209,88,0.25);
-      border-radius: 12px; padding: 10px 12px; text-align: center;
-    }
-    .mock-tracking-num { font-size: 2rem; font-weight: 800; color: var(--green); }
-    .mock-tracking-label { font-size: 0.65rem; color: rgba(255,255,255,0.5); margin-top: -4px; }
-
-    /* ── FEATURES ── */
-    .section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
+    /* HOW TO INSTALL */
+    .install-section { padding: 90px 24px; max-width: 860px; margin: 0 auto; }
     .section-tag {
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--blue); margin-bottom: 16px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 14px;
     }
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800; letter-spacing: -0.02em; margin-bottom: 48px;
+    .section-title { font-size: clamp(1.7rem, 3.5vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 40px; }
+
+    .steps { display: flex; flex-direction: column; gap: 16px; }
+    .step {
+      display: flex; gap: 20px; align-items: flex-start;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 22px;
+      transition: border-color 0.2s;
+    }
+    .step:hover { border-color: rgba(10,132,255,0.3); }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--blue), #5e5ce6);
+      display: grid; place-items: center;
+      font-size: 1rem; font-weight: 800; color: #fff;
+    }
+    .step-body h3 { font-size: 1rem; font-weight: 700; margin-bottom: 5px; }
+    .step-body p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+    .step-body a { color: var(--blue); text-decoration: none; }
+    .step-body a:hover { text-decoration: underline; }
+    .step-code {
+      margin-top: 10px; background: rgba(255,255,255,0.05);
+      border-radius: 8px; padding: 10px 14px;
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 0.78rem; color: var(--green);
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .copy-btn {
+      background: rgba(255,255,255,0.07); border: none; color: var(--muted);
+      padding: 4px 10px; border-radius: 6px; font-size: 0.7rem;
+      cursor: pointer; transition: background 0.15s; flex-shrink: 0;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,0.12); color: var(--text); }
+    .step-note {
+      margin-top: 8px; font-size: 0.78rem; color: rgba(255,159,10,0.9);
+      background: rgba(255,159,10,0.08); border-radius: 8px;
+      padding: 6px 10px; border-left: 3px solid var(--orange);
     }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-    .feature-card {
+    /* FEATURES */
+    .features { padding: 80px 24px; max-width: 1060px; margin: 0 auto; }
+    .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .feat-card {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 28px;
+      border-radius: 18px; padding: 24px;
       transition: transform 0.2s, border-color 0.2s;
     }
-    .feature-card:hover { transform: translateY(-4px); border-color: rgba(10,132,255,0.3); }
-    .feature-icon {
-      width: 48px; height: 48px; border-radius: 14px;
-      display: grid; place-items: center; font-size: 1.4rem; margin-bottom: 16px;
-    }
-    .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
-    .feature-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+    .feat-card:hover { transform: translateY(-3px); border-color: rgba(10,132,255,0.25); }
+    .feat-icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .feat-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .feat-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
 
-    /* ── LINES ── */
-    .lines-section { padding: 80px 24px; text-align: center; }
-    .lines-title { font-size: 1rem; color: var(--muted); margin-bottom: 24px; font-weight: 500; }
-    .lines { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 600px; margin: 0 auto; }
-    .line-chip {
+    /* TRANSPORT */
+    .transport { padding: 60px 24px; text-align: center; }
+    .transport p { color: var(--muted); margin-bottom: 20px; font-size: 0.9rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 550px; margin: 0 auto; }
+    .chip {
       display: flex; align-items: center; gap: 6px;
       padding: 6px 14px; border-radius: 20px;
-      font-size: 0.85rem; font-weight: 600; color: #fff;
+      font-size: 0.82rem; font-weight: 600;
     }
 
-    /* ── CTA ── */
-    .cta {
-      text-align: center; padding: 100px 24px;
-      background: linear-gradient(180deg, transparent, rgba(10,132,255,0.05), transparent);
-    }
-    .cta h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 16px; }
-    .cta p { color: var(--muted); margin-bottom: 40px; font-size: 1.05rem; }
-    .coming-soon {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 16px 32px; border-radius: 50px;
-      background: var(--card); border: 1px solid var(--border);
-      font-size: 1rem; font-weight: 600; color: var(--muted);
-    }
-
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
-      text-align: center; padding: 40px 24px;
+      text-align: center; padding: 36px 24px;
       border-top: 1px solid var(--border);
-      color: var(--muted); font-size: 0.85rem;
+      color: var(--muted); font-size: 0.82rem;
     }
     footer a { color: var(--blue); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
 
     @media (max-width: 600px) {
-      nav { padding: 14px 20px; }
-      .hero { padding: 100px 20px 60px; }
+      nav { padding: 12px 18px; }
+      .nav-links { display: none; }
+      .hero { padding: 90px 18px 50px; }
     }
   </style>
 </head>
@@ -245,155 +240,169 @@
 
 <nav>
   <div class="nav-logo">
-    <div class="icon">🚌</div>
+    <div class="nav-icon">🚌</div>
     MHD Průvodce
   </div>
-  <div class="nav-badge">iOS App</div>
+  <div class="nav-links">
+    <a href="#install">Instalace</a>
+    <a href="#features">Funkce</a>
+    <a href="https://github.com/petrchalupny81-ux/mhd-pruvodce">GitHub</a>
+    <a href="https://github.com/petrchalupny81-ux/mhd-pruvodce/releases/latest/download/MHDPruvodce.ipa" class="nav-dl">⬇ Stáhnout .ipa</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">Právě ve vývoji</div>
-  <h1>Nikdy <span>nezmeškej</span><br>svoji zastávku</h1>
-  <p class="hero-sub">
-    Sleduj spoje MHD v reálném čase po celé České republice.
-    Vibrace a zvuk tě upozorní přesně včas — i se zavřenou aplikací.
-  </p>
-  <div class="hero-buttons">
-    <a href="https://github.com/petrchalupny81-ux/mhd-pruvodce" class="btn btn-primary">
-      ⭐ GitHub repozitář
-    </a>
-    <a href="https://github.com/petrchalupny81-ux/mhd-pruvodce/actions" class="btn btn-secondary">
-      🔨 Build status
-    </a>
-  </div>
+  <div class="hero-tag"><div class="dot"></div> Zdarma pro iPhone</div>
+  <h1>Nikdy <em>nezmeškej</em><br>svoji zastávku</h1>
+  <p class="hero-desc">Real-time MHD po celé ČR. GPS upozornění tě varuje před příjezdem — i se zavřenou aplikací.</p>
 
-  <!-- PHONE MOCKUP -->
+  <div class="dl-buttons">
+    <a href="#install" class="btn btn-altstore">📲 Nainstalovat zdarma</a>
+    <a href="https://github.com/petrchalupny81-ux/mhd-pruvodce/releases/latest/download/MHDPruvodce.ipa" class="btn btn-ipa">⬇ Stáhnout .ipa</a>
+  </div>
+  <div class="free-badge">✓ 100% zdarma · Bez App Store · Bez platby</div>
+
   <div class="phone-wrap">
     <div class="phone">
-      <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="phone-title">Kde jedete?</div>
-        <div class="phone-sub">Vyberte zastávky a čas</div>
-
-        <div class="mock-input">
-          <span class="mock-input-icon">🔍</span>
-          <span class="mock-input-text">Náměstí Míru</span>
-        </div>
-        <div class="mock-input">
-          <span class="mock-input-icon">📍</span>
-          <span class="mock-input-text">Hlavní nádraží</span>
-        </div>
-
-        <div class="mock-result">
-          <div class="mock-result-row">
-            <span class="mock-time">08:42 → 09:18</span>
-            <span class="mock-duration">36 min</span>
-          </div>
-          <div class="mock-badges">
-            <span class="mock-badge badge-metro">A</span>
-            <span class="mock-badge badge-bus">🚌 14</span>
+      <div class="notch"></div>
+      <div class="screen">
+        <div class="s-title">Kde jedete?</div>
+        <div class="s-sub">Vyberte zastávky a čas</div>
+        <div class="s-input">🔍 Náměstí Míru</div>
+        <div class="s-input">📍 Hlavní nádraží</div>
+        <div class="s-card">
+          <div class="s-row"><span class="s-time">08:42 → 09:18</span><span class="s-dur">36 min</span></div>
+          <div class="s-badges">
+            <span class="sb sb-m">A</span>
+            <span class="sb sb-b">🚌 14</span>
           </div>
         </div>
-
-        <div class="mock-result">
-          <div class="mock-result-row">
-            <span class="mock-time">08:55 → 09:24</span>
-            <span class="mock-duration">29 min</span>
-          </div>
-          <div class="mock-badges">
-            <span class="mock-badge badge-tram">🚋 22</span>
-            <span class="mock-badge badge-metro">C</span>
+        <div class="s-card">
+          <div class="s-row"><span class="s-time">08:55 → 09:24</span><span class="s-dur">29 min</span></div>
+          <div class="s-badges">
+            <span class="sb sb-t">🚋 22</span>
+            <span class="sb sb-m" style="background:#5e5ce6">C</span>
           </div>
         </div>
-
-        <div class="mock-alert">
-          <span class="mock-alert-icon">🔔</span>
-          <div class="mock-alert-text">
-            <strong>Připomenutí aktivní</strong>
-            Upozorním tě 5 min před Hlavním nádražím
-          </div>
-        </div>
-
-        <div class="mock-tracking">
-          <div class="mock-tracking-num">4</div>
-          <div class="mock-tracking-label">minuty do zastávky</div>
+        <div class="s-alert">🔔 <div><strong style="display:block;color:#fff;font-size:0.7rem">Připomenutí aktivní</strong>Upozorním tě 5 min před Hlavním nádražím</div></div>
+        <div class="s-track">
+          <div class="s-track-n">4</div>
+          <div class="s-track-l">minuty do zastávky</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- INSTALL GUIDE -->
+<section class="install-section" id="install">
+  <div class="section-tag">Instalace</div>
+  <h2 class="section-title">Jak nainstalovat<br>na iPhone zdarma</h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Nainstaluj AltStore na iPhone</h3>
+        <p>AltStore je alternativní obchod s aplikacemi. Instaluje se přes počítač (Windows nebo Mac) + iTunes/Apple Devices. Stáhni ho na <a href="https://altstore.io" target="_blank">altstore.io</a> zdarma.</p>
+        <div class="step-note">⚠️ Potřebuješ počítač jen pro první instalaci AltStore. Pak vše funguje přímo z iPhonu.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Přidej náš zdroj do AltStore</h3>
+        <p>Otevři AltStore na iPhonu → záložka <strong>Browse</strong> → klikni na <strong>Sources</strong> → přidej tuto adresu:</p>
+        <div class="step-code">
+          <span>https://petrchalupny81-ux.github.io/mhd-pruvodce/apps.json</span>
+          <button class="copy-btn" onclick="navigator.clipboard.writeText('https://petrchalupny81-ux.github.io/mhd-pruvodce/apps.json');this.textContent='✓ Zkopírováno'">Kopírovat</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Nainstaluj MHD Průvodce</h3>
+        <p>V AltStore najdeš <strong>MHD Průvodce</strong> ve svém zdroji. Klikni <strong>Install</strong> — AltStore podepíše appku tvým Apple ID a nainstaluje ji. Hotovo!</p>
+        <div class="step-note">💡 Alternativně stáhni .ipa soubor níže a otevři ho přímo v AltStore přes aplikaci Soubory.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>Obnov každých 7 dní (automaticky)</h3>
+        <p>Free Apple ID umožňuje podpis aplikace na 7 dní. AltStore to obnovuje automaticky na pozadí — nic nemusíš dělat, pokud máš AltStore nainstalovaný.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:40px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+    <a href="https://github.com/petrchalupny81-ux/mhd-pruvodce/releases/latest/download/MHDPruvodce.ipa"
+       class="btn btn-altstore">⬇ Stáhnout MHDPruvodce.ipa</a>
+    <a href="https://altstore.io" target="_blank" class="btn btn-ipa">🌐 Stáhnout AltStore</a>
+  </div>
+</section>
+
 <!-- FEATURES -->
-<section class="section">
+<section class="features" id="features">
   <div class="section-tag">Funkce</div>
-  <h2 class="section-title">Všechno co potřebuješ<br>pro každodenní cestování</h2>
-
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon" style="background: rgba(10,132,255,0.15);">🔔</div>
+  <h2 class="section-title" style="margin-bottom:32px">Co appka umí</h2>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🔔</div>
       <h3>Upozornění před zastávkou</h3>
-      <p>Nastav si 10, 5, 3 nebo 2 minuty před příjezdem. Dostaneš vibrace a zvukové upozornění přesně včas.</p>
+      <p>Nastav 10, 5, 3 nebo 2 minuty před příjezdem. Funguje i se zavřenou aplikací díky GPS na pozadí.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background: rgba(48,209,88,0.15);">📍</div>
-      <h3>GPS sledování trasy</h3>
-      <p>Aplikace sleduje tvoji polohu a počítá vzdálenost k cílové zastávce — funguje i se zavřenou aplikací.</p>
+    <div class="feat-card">
+      <div class="feat-icon">🎧</div>
+      <h3>Zvuk jen se sluchátky</h3>
+      <p>Chytrá detekce — zvuk zazní jen při připojených sluchátkách. Jinak jen vibrace. Nerušíš okolí.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background: rgba(255,159,10,0.15);">🎧</div>
-      <h3>Zvuk pouze se sluchátky</h3>
-      <p>Chytrá detekce sluchátek — zvukové upozornění zazní jen když máš sluchátka zapojená. Jinak jen vibrace.</p>
+    <div class="feat-card">
+      <div class="feat-icon">📍</div>
+      <h3>GPS sledování</h3>
+      <p>Počítá vzdálenost k cílové zastávce v reálném čase. Záloha přes časové upozornění když GPS nestačí.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background: rgba(255,69,58,0.15);">⚡</div>
+    <div class="feat-card">
+      <div class="feat-icon">⚡</div>
       <h3>Real-time data</h3>
-      <p>Skutečné časy odjezdů a příjezdů z IDOS API. Vidíš zpoždění okamžitě — zelené "Včas" nebo červené "+X min".</p>
+      <p>Skutečné časy z IDOS. Vidíš zpoždění okamžitě — zelené "Včas" nebo červené "+3 min".</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background: rgba(94,92,230,0.15);">🏝️</div>
+    <div class="feat-card">
+      <div class="feat-icon">🏝️</div>
       <h3>Dynamic Island</h3>
-      <p>Odpočet do zastávky přímo na uzamčené obrazovce a v Dynamic Island na iPhone 14 Pro a novějších.</p>
+      <p>Odpočet do zastávky přímo na uzamčené obrazovce a v Dynamic Island na iPhone 14 Pro+.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background: rgba(10,132,255,0.15);">🗺️</div>
-      <h3>Mapa polohy</h3>
-      <p>Miniatura mapy ukazuje tvoji aktuální polohu a cílovou zastávku — přehledně a bez zbytečností.</p>
+    <div class="feat-card">
+      <div class="feat-icon">⭐</div>
+      <h3>Oblíbené trasy</h3>
+      <p>Ulož si oblíbené spoje — jedním klepnutím vyplníš formulář a hned hledáš.</p>
     </div>
   </div>
 </section>
 
-<!-- TRANSPORT TYPES -->
-<section class="lines-section">
-  <div class="lines-title">Podporuje všechny typy MHD v celé ČR</div>
-  <div class="lines">
-    <span class="line-chip" style="background: rgba(10,132,255,0.2); color: #0A84FF; border: 1px solid rgba(10,132,255,0.3);">🚌 Autobus</span>
-    <span class="line-chip" style="background: rgba(255,159,10,0.2); color: #FF9F0A; border: 1px solid rgba(255,159,10,0.3);">🚋 Tramvaj</span>
-    <span class="line-chip" style="background: rgba(48,209,88,0.2); color: #30D158; border: 1px solid rgba(48,209,88,0.3);">🚇 Metro</span>
-    <span class="line-chip" style="background: rgba(255,69,58,0.2); color: #FF453A; border: 1px solid rgba(255,69,58,0.3);">🚆 Vlak</span>
-    <span class="line-chip" style="background: rgba(191,90,242,0.2); color: #BF5AF2; border: 1px solid rgba(191,90,242,0.3);">⚡ Trolejbus</span>
-    <span class="line-chip" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.1);">⛴️ Přívoz</span>
+<!-- TRANSPORT -->
+<section class="transport">
+  <p>Podporuje všechny typy MHD v celé ČR</p>
+  <div class="chips">
+    <span class="chip" style="background:rgba(10,132,255,0.15);color:#0A84FF;border:1px solid rgba(10,132,255,0.25)">🚌 Autobus</span>
+    <span class="chip" style="background:rgba(255,159,10,0.15);color:#FF9F0A;border:1px solid rgba(255,159,10,0.25)">🚋 Tramvaj</span>
+    <span class="chip" style="background:rgba(48,209,88,0.15);color:#30D158;border:1px solid rgba(48,209,88,0.25)">🚇 Metro</span>
+    <span class="chip" style="background:rgba(255,69,58,0.15);color:#FF453A;border:1px solid rgba(255,69,58,0.25)">🚆 Vlak</span>
+    <span class="chip" style="background:rgba(191,90,242,0.15);color:#BF5AF2;border:1px solid rgba(191,90,242,0.25)">⚡ Trolejbus</span>
+    <span class="chip" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.1)">⛴️ Přívoz</span>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta">
-  <h2>Brzy v App Store</h2>
-  <p>Aplikace je ve vývoji. Sleduj GitHub pro aktuální stav buildu.</p>
-  <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-    <div class="coming-soon">🍎 App Store — Coming soon</div>
-    <a href="https://github.com/petrchalupny81-ux/mhd-pruvodce" class="btn btn-primary">
-      Sledovat na GitHubu
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <p>MHD Průvodce &copy; 2026 &nbsp;·&nbsp;
-     <a href="https://github.com/petrchalupny81-ux/mhd-pruvodce">GitHub</a> &nbsp;·&nbsp;
-     Vytvořeno s pomocí Claude Code
-  </p>
+  MHD Průvodce &copy; 2026 &nbsp;·&nbsp;
+  <a href="https://github.com/petrchalupny81-ux/mhd-pruvodce">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://github.com/petrchalupny81-ux/mhd-pruvodce/releases">Releases</a> &nbsp;·&nbsp;
+  Vytvořeno s pomocí Claude Code
 </footer>
 
 </body>
