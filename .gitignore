@@ -17,3 +17,8 @@ build/
 
 # macOS
 .DS_Store
+
+# Build artifacts
+build-logs*/
+build-output/
+build.log
