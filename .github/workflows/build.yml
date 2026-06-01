@@ -37,38 +37,30 @@ jobs:
           xcodebuild -list -project MHDPruvodce.xcodeproj
           xcrun simctl list devicetypes | grep -i "iphone" | tail -10
 
-      - name: Pick available simulator
-        id: sim
+      - name: Show available destinations
         run: |
-          # Find any available iPhone simulator on this runner
-          DEST=$(xcrun simctl list devices available | grep -i "iPhone" | grep -v "unavailable" | head -1)
-          echo "Available: $DEST"
-          # Extract UDID
-          UDID=$(echo "$DEST" | grep -oE '[0-9A-F-]{36}')
-          if [ -z "$UDID" ]; then
-            # Fallback: use generic platform destination
-            echo "dest=platform=iOS Simulator,name=iPhone 16" >> "$GITHUB_OUTPUT"
-          else
-            echo "dest=platform=iOS Simulator,id=$UDID" >> "$GITHUB_OUTPUT"
-          fi
+          xcodebuild -showdestinations -project MHDPruvodce.xcodeproj -scheme MHDPruvodce 2>&1 || true
+          xcrun simctl list devices available 2>&1 | grep -i "iphone" | head -10
 
-      - name: Build for simulator
+      - name: Build for simulator (SDK-based, no destination needed)
         run: |
           xcodebuild build \
             -project MHDPruvodce.xcodeproj \
             -scheme MHDPruvodce \
             -configuration Debug \
-            -destination '${{ steps.sim.outputs.dest }}' \
+            -sdk iphonesimulator \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_ENTITLEMENTS="" \
             SWIFT_TREAT_WARNINGS_AS_ERRORS=NO \
+            ONLY_ACTIVE_ARCH=NO \
             2>&1 | tee build.log
           if grep -q "BUILD SUCCEEDED" build.log; then
             echo "✅ BUILD SUCCEEDED"
           else
             echo "❌ BUILD FAILED"
-            grep "error:" build.log | head -40
+            grep "error:" build.log | grep -v "^note:" | head -50
             exit 1
           fi
 
@@ -77,7 +69,8 @@ jobs:
           xcodebuild test \
             -project MHDPruvodce.xcodeproj \
             -scheme MHDPruvodce \
-            -destination '${{ steps.sim.outputs.dest }}' \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
