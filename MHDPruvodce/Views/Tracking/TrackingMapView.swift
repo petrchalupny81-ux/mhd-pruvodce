@@ -36,7 +36,8 @@ struct TrackingMapView: View {
         .mapStyle(.standard(elevation: .flat))
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .onAppear { updateCamera() }
-        .onChange(of: userLocation) { _, _ in updateCamera() }
+        .onChange(of: userLocation?.latitude) { _, _ in updateCamera() }
+        .onChange(of: userLocation?.longitude) { _, _ in updateCamera() }
     }
 
     private func updateCamera() {

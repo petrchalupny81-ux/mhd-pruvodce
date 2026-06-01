@@ -1,6 +1,7 @@
 import Foundation
 
-struct Connection: Codable, Identifiable {
+struct Connection: Codable, Identifiable, Equatable {
+    static func == (lhs: Connection, rhs: Connection) -> Bool { lhs.id == rhs.id }
     let id: String
     let departureTime: Date
     let arrivalTime: Date
