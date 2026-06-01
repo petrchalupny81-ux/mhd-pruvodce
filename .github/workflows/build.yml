@@ -3,12 +3,12 @@ name: Build MHD Průvodce
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:   # ruční spuštění z GitHub UI jedním kliknutím
+  workflow_dispatch:
 
 jobs:
   build:
     name: Build for iOS Simulator
-    runs-on: macos-15     # Xcode 16, iOS 18 SDK
+    runs-on: macos-15
     timeout-minutes: 30
 
     steps:
@@ -19,76 +19,68 @@ jobs:
         run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
 
       - name: Show versions
-        run: |
-          xcodebuild -version
-          swift --version
+        run: xcodebuild -version && swift --version
 
-      - name: Create Config.plist from secret (or example)
+      - name: Create Config.plist
         run: |
           if [ -n "${{ secrets.CHAPS_API_KEY }}" ]; then
-            cat > MHDPruvodce/Config/Config.plist << EOF
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-              <key>CHAPS_API_KEY</key>
-              <string>${{ secrets.CHAPS_API_KEY }}</string>
-              <key>CHAPS_BASE_URL</key>
-              <string>https://api.idos.cz/api/v1</string>
-              <key>CHAPS_APP_ID</key>
-              <string>${{ secrets.CHAPS_APP_ID }}</string>
-          </dict>
-          </plist>
-          EOF
+            /usr/libexec/PlistBuddy -c "Add :CHAPS_API_KEY string ${{ secrets.CHAPS_API_KEY }}" MHDPruvodce/Config/Config.plist 2>/dev/null || true
+            /usr/libexec/PlistBuddy -c "Add :CHAPS_BASE_URL string https://api.idos.cz/api/v1" MHDPruvodce/Config/Config.plist 2>/dev/null || true
+            /usr/libexec/PlistBuddy -c "Add :CHAPS_APP_ID string ${{ secrets.CHAPS_APP_ID }}" MHDPruvodce/Config/Config.plist 2>/dev/null || true
           else
             cp MHDPruvodce/Config/Config.example.plist MHDPruvodce/Config/Config.plist
-            echo "ℹ️  Používám mock Config.plist (bez API klíče)"
+            echo "Using mock Config.plist (no API key)"
           fi
 
-      - name: Build for simulator (no signing needed)
+      - name: List project structure
+        run: xcodebuild -list -project MHDPruvodce.xcodeproj
+
+      - name: Build for simulator
         run: |
           xcodebuild build \
             -project MHDPruvodce.xcodeproj \
             -scheme MHDPruvodce \
             -configuration Debug \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+            -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=latest' \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
             SWIFT_TREAT_WARNINGS_AS_ERRORS=NO \
-            | xcpretty --color || xcodebuild build \
-              -project MHDPruvodce.xcodeproj \
-              -scheme MHDPruvodce \
-              -configuration Debug \
-              -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
-              CODE_SIGN_IDENTITY="" \
-              CODE_SIGNING_REQUIRED=NO \
-              CODE_SIGNING_ALLOWED=NO
+            2>&1 | tee build.log
+          if grep -q "BUILD SUCCEEDED" build.log; then
+            echo "✅ BUILD SUCCEEDED"
+          else
+            echo "❌ BUILD FAILED"
+            grep "error:" build.log | head -30
+            exit 1
+          fi
 
-      - name: Run tests
+      - name: Run unit tests
         run: |
           xcodebuild test \
             -project MHDPruvodce.xcodeproj \
             -scheme MHDPruvodce \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+            -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=latest' \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
             SWIFT_TREAT_WARNINGS_AS_ERRORS=NO \
-            | xcpretty --color || true
+            2>&1 | tail -20 || true
 
-      - name: Find and zip .app bundle
+      - name: Package .app bundle
         run: |
-          APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData -name "MHDPruvodce.app" -type d 2>/dev/null | head -1)
-          if [ -n "$APP_PATH" ]; then
+          APP=$(find ~/Library/Developer/Xcode/DerivedData -name "MHDPruvodce.app" \
+                -path "*/Debug-iphonesimulator/*" -type d 2>/dev/null | head -1)
+          if [ -n "$APP" ]; then
             mkdir -p Artifacts
-            zip -r Artifacts/MHDPruvodce-simulator.zip "$APP_PATH"
-            echo "✅  App bundle: $APP_PATH"
+            ditto -c -k --sequesterRsrc --keepParent "$APP" Artifacts/MHDPruvodce-simulator.zip
+            echo "✅ Packaged: $APP"
+            ls -lh Artifacts/
           else
-            echo "⚠️  App bundle nenalezen v DerivedData"
+            echo "⚠️ .app not found in DerivedData"
           fi
 
-      - name: Upload simulator build
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: MHDPruvodce-simulator-build
@@ -96,10 +88,10 @@ jobs:
           retention-days: 14
           if-no-files-found: warn
 
-      - name: Build summary
-        run: |
-          echo "### ✅ Build dokončen" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Scheme:** MHDPruvodce" >> $GITHUB_STEP_SUMMARY
-          echo "- **Destination:** iOS Simulator (iPhone 16)" >> $GITHUB_STEP_SUMMARY
-          echo "- **Artifact:** MHDPruvodce-simulator-build (ke stažení v záložce Artifacts)" >> $GITHUB_STEP_SUMMARY
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
+          retention-days: 7
